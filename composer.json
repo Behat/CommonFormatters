@@ -1,0 +1,25 @@
+{
+    "name":         "behat/common-formatters",
+    "description":  "Commonly used formatters for Behat",
+    "keywords":     ["BDD", "Behat", "Symfony2", "Context"],
+    "homepage":     "http://behat.org/",
+    "type":         "library",
+    "license":      "MIT",
+    "authors":      [
+        {
+            "name":      "Fabian Kiss",
+            "email":     "headrevision@gmail.com"
+        }
+    ],
+
+    "require": {
+        "php":          ">=5.3.1",
+        "behat/behat":  ">=2.3.5"
+    },
+
+    "autoload": {
+        "psr-0": {
+            "Behat\\CommonFormatters": ""
+        }
+    }
+}
