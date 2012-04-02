@@ -38,7 +38,7 @@ class CsvStatisticsFormatter extends ConsoleFormatter
     protected function getDefaultParameters()
     {
         return array(
-            'max_filesize' => 1024^3,
+            'max_filesize' => 1073741824, // 1024^3
             'delimiter' => ","
         );
     }
