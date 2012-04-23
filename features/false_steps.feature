@@ -324,15 +324,10 @@ Feature: Formatters with failed steps
                   padding:2px 10px;
                   font-size:16px;
               }
-              #behat .scenario .examples table .exception td {
-                  border-left:5px solid #000;
-                  padding-left:0px;
-              }
               #behat .scenario .examples table .failed.exception td {
+                  border-left:5px solid #000;
                   border-color:#C20000 !important;
-              }
-              #behat .scenario .examples table .false.exception td {
-                  border-color:#c200ee !important;
+                  padding-left:0px;
               }
               pre {
                   font-family:monospace;
@@ -349,14 +344,9 @@ Feature: Formatters with failed steps
                   overflow:hidden;
                   margin-left:20px;
                   padding:15px;
+                  border-left:2px solid #C20000;
                   background: #fff;
                   margin-right:15px;
-              }
-              .failed .backtrace {
-                  border-left:2px solid #C20000;
-              }
-              .false .backtrace {
-                  border-left:2px solid #c200ee;
               }
               #behat .passed {
                   background:#DBFFB4;
@@ -367,11 +357,6 @@ Feature: Formatters with failed steps
                   background:#FFFBD3;
                   border-color:#C20000 !important;
                   color:#C20000;
-              }
-              #behat .false {
-                  background:#ead9ee;
-                  border-color:#c200ee !important;
-                  color:#c200ee;
               }
               #behat .undefined, #behat .pending {
                   border-color:#FAF834 !important;
@@ -443,50 +428,68 @@ Feature: Formatters with failed steps
                   content:' |-';
                   font-weight:bold;
               }
+              #behat .scenario .examples table .exception td {
+                  border-left:5px solid #000;
+                  padding-left:0px;
+              }
+              #behat .scenario .examples table .false.exception td {
+                  border-color:#c200ee !important;
+              }
+              .failed .backtrace {
+                  border-left:2px solid #C20000;
+              }
+              .false .backtrace {
+                  border-left:2px solid #c200ee;
+              }
+              #behat .false {
+                  background:#ead9ee;
+                  border-color:#c200ee !important;
+                  color:#c200ee;
+              }
           </style>
       
           <style type="text/css" media="print">
               body {
                   padding:0px;
               }
-      
+
               #behat {
                   font-size:11px;
               }
-      
+
               #behat .jq-toggle > .scenario,
               #behat .jq-toggle > ol {
                   display:block;
               }
-      
+
               #behat .summary {
                   position:relative;
               }
-      
+
               #behat .summary .counters {
                   border:none;
               }
-      
+
               #behat .summary .switchers {
                   display:none;
               }
-      
+
               #behat .step .path {
                   display:none;
               }
-      
+
               #behat .jq-toggle > h2:after,
               #behat .jq-toggle > h3:after {
                   content:'';
                   font-weight:bold;
               }
-      
+
               #behat .jq-toggle-opened > h2:after,
               #behat .jq-toggle-opened > h3:after {
                   content:'';
                   font-weight:bold;
               }
-      
+
               #behat .scenario > ol li {
                   border-left:none;
               }
@@ -622,13 +625,13 @@ Feature: Formatters with failed steps
                       .click(function(){
                           var $scenario = $('.feature .scenario:not(:has(li.failed, li.false, li.pending))');
                           var $feature  = $scenario.parent();
-      
+
                           $('#behat_hide_all').click();
-      
+
                           $scenario.addClass('jq-toggle-opened');
                           $feature.addClass('jq-toggle-opened');
                       });
-      
+
                   $('#behat .summary .counters .steps .passed')
                       .addClass('switcher')
                       .click(function(){
@@ -646,13 +649,13 @@ Feature: Formatters with failed steps
                       .click(function(){
                           var $scenario = $('.feature .scenario:has(li.failed, li.false)');
                           var $feature = $scenario.parent();
-      
+
                           $('#behat_hide_all').click();
-      
+
                           $scenario.addClass('jq-toggle-opened');
                           $feature.addClass('jq-toggle-opened');
                       });
-      
+
                   $('#behat .summary .counters .false')
                       .addClass('switcher')
                       .click(function(){
