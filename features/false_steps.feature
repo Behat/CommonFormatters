@@ -548,7 +548,7 @@ Feature: Formatters with failed steps
       <li class="skipped">
       <div class="step">
       <span class="keyword">Given </span>
-      <span class="text"><strong class="skipped_param"><failure></strong> occurs</span>
+      <span class="text"><strong class="skipped_param">&lt;failure&gt;</strong> occurs</span>
       <span class="path">features/steps/failures.php:2</span>
       </div>
       </li>
