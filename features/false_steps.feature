@@ -623,7 +623,7 @@ Feature: Formatters with failed steps
                   $('#behat .summary .counters .scenarios .passed')
                       .addClass('switcher')
                       .click(function(){
-                          var $scenario = $('.feature .scenario:not(:has(li.failed, li.false, li.pending))');
+                          var $scenario = $('.feature .scenario:not(:has(.failed, .false, .pending))');
                           var $feature  = $scenario.parent();
 
                           $('#behat_hide_all').click();
@@ -635,7 +635,7 @@ Feature: Formatters with failed steps
                   $('#behat .summary .counters .steps .passed')
                       .addClass('switcher')
                       .click(function(){
-                          var $scenario = $('.feature .scenario:has(li.passed)');
+                          var $scenario = $('.feature .scenario:has(.passed)');
                           var $feature  = $scenario.parent();
       
                           $('#behat_hide_all').click();
@@ -647,7 +647,7 @@ Feature: Formatters with failed steps
                   $('#behat .summary .counters .failed')
                       .addClass('switcher')
                       .click(function(){
-                          var $scenario = $('.feature .scenario:has(li.failed, li.false)');
+                          var $scenario = $('.feature .scenario:has(.failed, .false)');
                           var $feature = $scenario.parent();
 
                           $('#behat_hide_all').click();
@@ -659,7 +659,7 @@ Feature: Formatters with failed steps
                   $('#behat .summary .counters .false')
                       .addClass('switcher')
                       .click(function(){
-                          var $scenario = $('.feature .scenario:has(li.false)');
+                          var $scenario = $('.feature .scenario:has(.false)');
                           var $feature = $scenario.parent();
       
                           $('#behat_hide_all').click();
@@ -671,7 +671,7 @@ Feature: Formatters with failed steps
                   $('#behat .summary .counters .skipped')
                       .addClass('switcher')
                       .click(function(){
-                          var $scenario = $('.feature .scenario:has(li.skipped)');
+                          var $scenario = $('.feature .scenario:has(.skipped)');
                           var $feature = $scenario.parent();
       
                           $('#behat_hide_all').click();
@@ -683,7 +683,7 @@ Feature: Formatters with failed steps
                   $('#behat .summary .counters .pending')
                       .addClass('switcher')
                       .click(function(){
-                          var $scenario = $('.feature .scenario:has(li.pending)');
+                          var $scenario = $('.feature .scenario:has(.pending)');
                           var $feature = $scenario.parent();
       
                           $('#behat_hide_all').click();
