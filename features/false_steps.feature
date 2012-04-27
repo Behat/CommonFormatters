@@ -270,48 +270,66 @@ Feature: Formatters with failed steps
                   margin-left:20px;
                   margin-bottom:20px;
               }
-              #behat .scenario > ol {
+              #behat .scenario > ol,
+              #behat .scenario .examples > ol {
                   margin:0px;
                   list-style:none;
-                  margin-left:20px;
                   padding:0px;
               }
-              #behat .scenario > ol:after {
+              #behat .scenario > ol {
+                  margin-left:20px;
+              }
+              #behat .scenario > ol:after,
+              #behat .scenario .examples > ol:after {
                   content:'';
                   display:block;
                   clear:both;
               }
-              #behat .scenario > ol li {
+              #behat .scenario > ol li,
+              #behat .scenario .examples > ol li {
                   float:left;
                   width:95%;
                   padding-left:5px;
                   border-left:5px solid;
                   margin-bottom:4px;
               }
-              #behat .scenario > ol li .argument {
+              #behat .scenario > ol li .argument,
+              #behat .scenario .examples > ol li .argument {
                   margin:10px 20px;
                   font-size:16px;
                   overflow:hidden;
               }
-              #behat .scenario > ol li table.argument {
+              #behat .scenario > ol li table.argument,
+              #behat .scenario .examples > ol li table.argument {
                   border:1px solid #d2d2d2;
               }
-              #behat .scenario > ol li table.argument thead td {
+              #behat .scenario > ol li table.argument thead td,
+              #behat .scenario .examples > ol li table.argument thead td {
                   font-weight: bold;
               }
-              #behat .scenario > ol li table.argument td {
+              #behat .scenario > ol li table.argument td,
+              #behat .scenario .examples > ol li table.argument td {
                   padding:5px 10px;
                   background:#f3f3f3;
               }
-              #behat .scenario > ol li .keyword {
+              #behat .scenario > ol li .keyword,
+              #behat .scenario .examples > ol li .keyword {
                   font-weight:bold;
               }
-              #behat .scenario > ol li .path {
+              #behat .scenario > ol li .path,
+              #behat .scenario .examples > ol li .path {
                   float:right;
               }
               #behat .scenario .examples {
                   margin-top:20px;
                   margin-left:40px;
+              }
+              #behat .scenario .examples h4 span {
+                  font-weight:normal;
+                  background:#f3f3f3;
+                  color:#999;
+                  padding:0 5px;
+                  margin-left:10px;
               }
               #behat .scenario .examples table {
                   margin-left:20px;
@@ -407,11 +425,13 @@ Feature: Formatters with failed steps
                   margin:0px;
               }
               #behat .jq-toggle > .scenario,
-              #behat .jq-toggle > ol {
+              #behat .jq-toggle > ol,
+              #behat .jq-toggle > .examples {
                   display:none;
               }
               #behat .jq-toggle-opened > .scenario,
-              #behat .jq-toggle-opened > ol {
+              #behat .jq-toggle-opened > ol,
+              #behat .jq-toggle-opened > .examples {
                   display:block;
               }
               #behat .jq-toggle > h2,
@@ -458,6 +478,7 @@ Feature: Formatters with failed steps
               }
 
               #behat .jq-toggle > .scenario,
+              #behat .jq-toggle > .scenario .examples,
               #behat .jq-toggle > ol {
                   display:block;
               }
@@ -490,7 +511,8 @@ Feature: Formatters with failed steps
                   font-weight:bold;
               }
 
-              #behat .scenario > ol li {
+              #behat .scenario > ol li,
+              #behat .scenario .examples > ol li {
                   border-left:none;
               }
           </style>
