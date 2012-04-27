@@ -1,17 +1,6 @@
 Commonly used formatters for Behat
 ==================================
 
-Formatter that creates output with links to the source containing the step definitions
---------------------------------------------------------------------------------------
-
-### HtmlLinkedFormatter
-
-Parameter `remote_base_url` specifies the URL of the repository the paths to the context classes are relative to.
-
-https://github.com/Behat/CommonFormatters/blob/master/src/Behat/CommonFormatters/HtmlLinkedFormatter.php
-
-![HtmlLinkedFormatter](https://github.com/Behat/CommonFormatters/raw/master/doc/html_linked_formatter.png "HtmlLinkedFormatter")
-
 Formatters that distinguish between an error and a failure in terms of xUnit's notion
 -------------------------------------------------------------------------------------
 
