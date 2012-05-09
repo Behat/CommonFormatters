@@ -8,20 +8,11 @@ Feature: CSV statistics formatter
       """
       default:
         paths:
-          features:               %%BEHAT_CONFIG_PATH%%/features
-          bootstrap:              %%BEHAT_CONFIG_PATH%%/features/bootstrap
+          features:   features
+          bootstrap:   features/bootstrap
         formatter:
-          name:                   'csv'
           classes:
-            csv:                  'Behat\CommonFormatters\CsvStatisticsFormatter'
-
-      annotations:
-        paths:
-          features:               %%BEHAT_CONFIG_PATH%%/features/annotations
-
-      closures:
-        paths:
-          features:               %%BEHAT_CONFIG_PATH%%/features/closures
+            Behat\CommonFormatters\CsvStatisticsFormatter:   'Behat\CommonFormatters\CsvStatisticsFormatter'
       """
     Given a file named "features/bootstrap/FeatureContext.php" with:
       """
@@ -108,7 +99,7 @@ Feature: CSV statistics formatter
       """
 
 Scenario: CSV-formatted output containing field names and one record
-    When I run "behat -c behat.yml -f csv --no-time"
+    When I run "behat -f 'Behat\CommonFormatters\CsvStatisticsFormatter' --no-time"
     Then the output should contain:
       """
 execution date,number of features,number of features with failures,number of scenarios,number of scenarios with failures,number of steps,number of failed steps

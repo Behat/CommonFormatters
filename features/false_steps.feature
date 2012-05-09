@@ -8,29 +8,13 @@ Feature: Formatters with failed steps
       """
       default:
         paths:
-          features:               %%BEHAT_CONFIG_PATH%%/features
-          bootstrap:              %%BEHAT_CONFIG_PATH%%/features/bootstrap
+          features:   features
+          bootstrap:   features/bootstrap
         formatter:
-          name:                    'pretty_false'
-          parameters:
-            decorated:           true
-            verbose:             false
-            time:                true
-            language:            'en'
-            output_path:         null
-            multiline_arguments: true
           classes:
-            progress_false:      'Behat\CommonFormatters\ProgressWithFalseStepsFormatter',
-            pretty_false:        'Behat\CommonFormatters\PrettyWithFalseStepsFormatter',
-            html_false:          'Behat\CommonFormatters\HtmlWithFalseStepsFormatter'
-
-      annotations:
-        paths:
-          features:               %%BEHAT_CONFIG_PATH%%/features/annotations
-
-      closures:
-        paths:
-          features:               %%BEHAT_CONFIG_PATH%%/features/closures
+            Behat\CommonFormatters\ProgressWithFalseStepsFormatter:   'Behat\CommonFormatters\ProgressWithFalseStepsFormatter',
+            Behat\CommonFormatters\PrettyWithFalseStepsFormatter:   'Behat\CommonFormatters\PrettyWithFalseStepsFormatter',
+            Behat\CommonFormatters\HtmlWithFalseStepsFormatter:   'Behat\CommonFormatters\HtmlWithFalseStepsFormatter'
       """
     Given a file named "features/bootstrap/FeatureContext.php" with:
       """
@@ -126,7 +110,7 @@ Feature: Formatters with failed steps
       """
 
   Scenario: Progress formatter with false steps
-    When I run "behat -c behat.yml -f progress_false --no-time"
+    When I run "behat -f 'Behat\CommonFormatters\ProgressWithFalseStepsFormatter' --no-time"
     Then it should fail with:
       """
       FSFS
@@ -143,11 +127,11 @@ Feature: Formatters with failed steps
 
       (::) false steps (::)
 
-      01. Failed asserting that <boolean:false> is true.
+      01. Failed asserting that false is true.
           In step `Given an assertion framework exception occurs'.                            # features/steps/failures.php:6
           From scenario `False step (a failed step due to an assertion framework exception)'. # features/false_step.feature:6
 
-      02. Failed asserting that <boolean:false> is true.
+      02. Failed asserting that false is true.
           In step `Given an assertion framework exception occurs'.                            # features/steps/failures.php:6
           From scenario `Non-false step and false step'.                                      # features/false_step.feature:9
 
@@ -156,7 +140,7 @@ Feature: Formatters with failed steps
       """
 
   Scenario: Pretty formatter with false steps
-    When I run "behat -c behat.yml -f pretty_false --no-time"
+    When I run "behat -f 'Behat\CommonFormatters\PrettyWithFalseStepsFormatter' --no-time"
     Then it should fail with:
       """
       Feature: False step recognition
@@ -167,7 +151,7 @@ Feature: Formatters with failed steps
 
         Scenario: False step (a failed step due to an assertion framework exception) # features/false_step.feature:6
           Given an assertion framework exception occurs                              # features/steps/failures.php:6
-            Failed asserting that <boolean:false> is true.
+            Failed asserting that false is true.
 
         Scenario Outline: Non-false step and false step                              # features/false_step.feature:9
           Given <failure> occurs                                                     # features/steps/failures.php:2
@@ -177,14 +161,14 @@ Feature: Formatters with failed steps
             | an unexpected error              |
               A runtime exception occured.
             | an assertion framework exception |
-              Failed asserting that <boolean:false> is true.
+              Failed asserting that false is true.
 
       4 scenarios (4 failed [2 false])
       4 steps (4 failed [2 false])
       """
 
   Scenario: HTML formatter with false steps
-    When I run "behat -c behat.yml -f html_false --no-time"
+    When I run "behat -f 'Behat\CommonFormatters\HtmlWithFalseStepsFormatter' --no-time"
     Then the output should contain:
       """
       <div class="feature">
@@ -223,7 +207,7 @@ Feature: Formatters with failed steps
       <span class="text">an assertion framework exception occurs</span>
       <span class="path">features/steps/failures.php:6</span>
       </div>
-      <pre class="backtrace">Failed asserting that &lt;boolean:false&gt; is true.</pre>
+      <pre class="backtrace">Failed asserting that false is true.</pre>
       </li>
       </ol>
       </div>
@@ -264,7 +248,7 @@ Feature: Formatters with failed steps
       </tr>
       <tr class="false exception">
       <td colspan="1">
-      <pre class="backtrace">Failed asserting that &lt;boolean:false&gt; is true.</pre>
+      <pre class="backtrace">Failed asserting that false is true.</pre>
       </td>
       </tr>
       </tbody>
