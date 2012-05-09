@@ -113,7 +113,7 @@ class PrettyWithFalseStepsFormatter extends PrettyFormatter
             (!$exception instanceof UndefinedException || null === $snippet)) {
             $this->printStepException($exception, $color);
         }
-        if (null !== $snippet) {
+        if (null !== $snippet && $this->getParameter('snippets')) {
             $this->printStepSnippet($snippet);
         }
     }

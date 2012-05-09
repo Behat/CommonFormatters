@@ -27,14 +27,6 @@ class CsvStatisticsFormatter extends ConsoleFormatter
     /**
      * {@inheritdoc}
      */
-    public static function getDescription()
-    {
-        return "Updates CSV file.";
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     protected function getDefaultParameters()
     {
         return array(
