@@ -32,7 +32,7 @@ class FeatureContext extends BaseFeaturesContext
      *
      * @var     string
      */
-    private $env = 'formatter[parameters][language]=en&formatter[parameters][time]=false&formatter[parameters][output_decorate]=false';
+    private $env;
     /**
      * Last runned command name.
      *
@@ -116,22 +116,33 @@ class FeatureContext extends BaseFeaturesContext
      */
     public function iRunBehat($argumentsString = '')
     {
-        $php = 0 === mb_strpos(BEHAT_PHP_BIN_PATH, '/usr/bin/env')
-             ? BEHAT_PHP_BIN_PATH
-             : escapeshellarg(BEHAT_PHP_BIN_PATH);
         $argumentsString = strtr($argumentsString, array('\'' => '"'));
 
         if ('/' === DIRECTORY_SEPARATOR) {
             $argumentsString .= ' 2>&1';
         }
 
-        exec($command = sprintf('BEHAT_PARAMS="%s" %s %s %s',
-            $this->env, $php, escapeshellarg(BEHAT_BIN_PATH), $argumentsString
-        ), $output, $return);
+        if ($this->env) {
+            exec($command = sprintf('BEHAT_PARAMS="%s" %s %s %s',
+                $this->env, BEHAT_PHP_BIN_PATH, escapeshellarg(BEHAT_BIN_PATH), $argumentsString
+            ), $output, $return);
+        } else {
+            exec($command = sprintf('%s %s %s --no-time',
+                BEHAT_PHP_BIN_PATH, escapeshellarg(BEHAT_BIN_PATH), $argumentsString
+            ), $output, $return);
+        }
 
         $this->command = 'behat ' . $argumentsString;
         $this->output  = trim(implode("\n", $output));
         $this->return  = $return;
+    }
+
+    /**
+     * @When I escape ansi characters in the output
+     */
+    public function iEscapeAnsiCharactersInTheOutput()
+    {
+        $this->output = addcslashes($this->output, "\033");
     }
 
     /**
