@@ -1,6 +1,9 @@
 Commonly used formatters for Behat
 ==================================
 
+[![Build
+Status](https://secure.travis-ci.org/Behat/CommonFormatters.png?branch=master)](http://travis-ci.org/Behat/CommonFormatters)
+
 This is an aggregation of extra formatters for [behat](https://github.com/Behat/Behat) in the form of a behat extension.
 
 Installation
