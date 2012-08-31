@@ -12,9 +12,9 @@ Feature: Formatters with failed steps
           bootstrap:   features/bootstrap
         formatter:
           classes:
-            Behat\CommonFormatters\ProgressWithFalseStepsFormatter:   'Behat\CommonFormatters\ProgressWithFalseStepsFormatter',
-            Behat\CommonFormatters\PrettyWithFalseStepsFormatter:   'Behat\CommonFormatters\PrettyWithFalseStepsFormatter',
-            Behat\CommonFormatters\HtmlWithFalseStepsFormatter:   'Behat\CommonFormatters\HtmlWithFalseStepsFormatter'
+            progress_false: 'Behat\CommonFormatters\ProgressWithFalseStepsFormatter'
+            pretty_false:   'Behat\CommonFormatters\PrettyWithFalseStepsFormatter'
+            html_false:     'Behat\CommonFormatters\HtmlWithFalseStepsFormatter'
       """
     Given a file named "features/bootstrap/FeatureContext.php" with:
       """
@@ -110,7 +110,7 @@ Feature: Formatters with failed steps
       """
 
   Scenario: Progress formatter with false steps
-    When I run "behat -f 'Behat\CommonFormatters\ProgressWithFalseStepsFormatter' --no-time"
+    When I run "behat -f progress_false --no-time"
     Then it should fail with:
       """
       FSFS
@@ -140,7 +140,7 @@ Feature: Formatters with failed steps
       """
 
   Scenario: Pretty formatter with false steps
-    When I run "behat -f 'Behat\CommonFormatters\PrettyWithFalseStepsFormatter' --no-time"
+    When I run "behat -f pretty_false --no-time"
     Then it should fail with:
       """
       Feature: False step recognition
@@ -168,7 +168,7 @@ Feature: Formatters with failed steps
       """
 
   Scenario: HTML formatter with false steps
-    When I run "behat -f 'Behat\CommonFormatters\HtmlWithFalseStepsFormatter' --no-time"
+    When I run "behat -f html_false --no-time"
     Then the output should contain:
       """
       <div class="feature">
