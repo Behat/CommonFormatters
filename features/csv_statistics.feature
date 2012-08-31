@@ -12,7 +12,7 @@ Feature: CSV statistics formatter
           bootstrap:   features/bootstrap
         formatter:
           classes:
-            Behat\CommonFormatters\CsvStatisticsFormatter:   'Behat\CommonFormatters\CsvStatisticsFormatter'
+            csv_statistics: 'Behat\CommonFormatters\CsvStatisticsFormatter'
       """
     Given a file named "features/bootstrap/FeatureContext.php" with:
       """
@@ -99,7 +99,7 @@ Feature: CSV statistics formatter
       """
 
 Scenario: CSV-formatted output containing field names and one record
-    When I run "behat -f 'Behat\CommonFormatters\CsvStatisticsFormatter' --no-time"
+    When I run "behat -f csv_statistics --no-time"
     Then the output should contain:
       """
 execution date,number of features,number of features with failures,number of scenarios,number of scenarios with failures,number of steps,number of failed steps
