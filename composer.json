@@ -1,7 +1,7 @@
 {
     "name":         "behat/common-formatters",
     "description":  "Commonly used formatters for Behat",
-    "keywords":     ["BDD", "Behat", "Symfony2", "Context"],
+    "keywords":     ["BDD", "Behat"],
     "homepage":     "http://behat.org/",
     "type":         "library",
     "license":      "MIT",
