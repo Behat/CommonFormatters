@@ -1,9 +1,9 @@
 {
     "name":         "behat/common-formatters",
+    "type":         "behat-extension",
     "description":  "Commonly used formatters for Behat",
-    "keywords":     ["BDD", "Behat", "Symfony2", "Context"],
+    "keywords":     ["BDD", "Behat"],
     "homepage":     "http://behat.org/",
-    "type":         "library",
     "license":      "MIT",
     "authors":      [
         {
@@ -13,8 +13,8 @@
     ],
 
     "require": {
-        "php":          ">=5.3.1",
-        "behat/behat":  "=2.4.0beta3"
+        "php":          ">=5.3.2",
+        "behat/behat":  ">=2.4.0,<2.5.0"
     },
 
     "autoload": {
