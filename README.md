@@ -9,7 +9,7 @@ An aggregation of extra formatters for Behat supposed to be used commonly.
 Installation
 ------------
 
-See https://github.com/Behat/MinkExtension/blob/master/doc/index.rst
+See https://github.com/Behat/CommonFormatters/blob/master/doc/index.rst
 
 Formatters that distinguish between an error and a failure in terms of xUnit's notion
 -------------------------------------------------------------------------------------
