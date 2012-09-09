@@ -181,7 +181,7 @@ class ProgressWithFalseStepsFormatter extends ProgressFormatter
         $count  = $logger->getScenariosCount();
         $header = $this->translateChoice('scenarios_count', $count, array('%1%' => $count));
         $this->write($header);
-        $this->printStatusesSummary($logger->getScenariosStatuses(), $logger);
+        $this->printStatusesExtendedSummary($logger->getScenariosStatuses(), $logger);
     }
 
     /**
@@ -192,13 +192,13 @@ class ProgressWithFalseStepsFormatter extends ProgressFormatter
         $count  = $logger->getStepsCount();
         $header = $this->translateChoice('steps_count', $count, array('%1%' => $count));
         $this->write($header);
-        $this->printStatusesSummary($logger->getStepsStatuses(), $logger);
+        $this->printStatusesExtendedSummary($logger->getStepsStatuses(), $logger);
     }
 
     /**
-     * {@inheritdoc}
+     * @see printStatusesSummary()
      */
-    protected function printStatusesSummary(array $statusesStatistics, LoggerDataCollector $logger)
+    protected function printStatusesExtendedSummary(array $statusesStatistics, LoggerDataCollector $logger)
     {
         $numberOfFalseSteps = count(FalseStepRecognizer::getFalseStepsEvents($logger));
         $statusesStatistics['false'] = $numberOfFalseSteps;
