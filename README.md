@@ -1,32 +1,12 @@
-Commonly used formatters for Behat
-==================================
+CommonFormatters Behat extension
+================================
 
-This is an aggregation of extra formatters for [behat](https://github.com/Behat/Behat) in the form of a behat extension.
+An aggregation of extra formatters for Behat supposed to be used commonly.
 
 Installation
 ------------
 
-The easiest way to integrate these formatters as an extension into your existing behat installation is to use composer. For that, add the following dependency to behat's `composer.json` and execute `php composer.phar update` subsequently.
-
-    {
-        "require": {
-            ...
-            "behat/common-formatters": "*"
-        }
-    }
-
-In order to use the extension as well as the particular formatters add the following lines to your `behat.yml`.
-
-    # behat.yml
-    default:
-        # ...
-        extensions:
-            Behat\CommonFormatters\Extension:
-                formatters:
-                    progress_false: 'Behat\CommonFormatters\ProgressWithFalseStepsFormatter',
-                    pretty_false: 'Behat\CommonFormatters\PrettyWithFalseStepsFormatter',
-                    html_false: 'Behat\CommonFormatters\HtmlWithFalseStepsFormatter',
-                    csv_statistics: 'Behat\CommonFormatters\CsvStatisticsFormatter'
+See https://github.com/Behat/MinkExtension/blob/master/doc/index.rst
 
 Formatters that distinguish between an error and a failure in terms of xUnit's notion
 -------------------------------------------------------------------------------------
