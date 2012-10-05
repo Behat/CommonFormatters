@@ -28,6 +28,8 @@ use Json\SchemaException,
 /**
  * Formatter that dumps the most important information about a suite run as JSON.
  *
+ * @link   https://github.com/Behat/CommonFormatters/blob/master/features/json.feature
+ *
  * @author Fabian Kiss <headrevision@gmail.com>
  */
 class JsonFormatter extends ConsoleFormatter

@@ -19,7 +19,8 @@ use Behat\CommonFormatters\Util\FalseStepRecognizer;
 /**
  * Progress formatter with false steps.
  *
- * @author      Fabian Kiss <headrevision@gmail.com>
+ * @link   https://github.com/Behat/CommonFormatters/blob/master/features/false_steps.feature
+ * @author Fabian Kiss <headrevision@gmail.com>
  */
 class ProgressWithFalseStepsFormatter extends ProgressFormatter
 {

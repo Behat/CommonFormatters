@@ -21,7 +21,9 @@ use Behat\CommonFormatters\Util\FalseStepRecognizer;
 /**
  * Pretty formatter with false steps.
  *
- * @author      Fabian Kiss <headrevision@gmail.com>
+ * @link   https://github.com/Behat/CommonFormatters/blob/master/features/false_steps.feature
+ *
+ * @author Fabian Kiss <headrevision@gmail.com>
  */
 class PrettyWithFalseStepsFormatter extends PrettyFormatter
 {

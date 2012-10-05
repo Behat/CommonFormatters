@@ -13,7 +13,9 @@ use Symfony\Component\Console\Output\StreamOutput;
 /**
  * Formatter that adds a new line to a CSV file for each suite run.
  *
- * @author      Fabian Kiss <headrevision@gmail.com>
+ * @link   https://github.com/Behat/CommonFormatters/blob/master/features/csv_statistics.feature
+ *
+ * @author Fabian Kiss <headrevision@gmail.com>
  */
 class CsvStatisticsFormatter extends ConsoleFormatter
 {
