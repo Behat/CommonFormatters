@@ -1,0 +1,86 @@
+{
+  "type": "array",
+  "required": true,
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "required": true,
+    "properties": {
+      "title": {
+        "type": "string",
+        "required": true
+      },
+      "desc": {
+        "type": ["string", "null"],
+        "required": true
+      },
+      "scenarios": {
+        "type": "array",
+        "required": true,
+        "items": {
+          "type": "object",
+          "required": true,
+          "properties": {
+            "title": {
+              "type": ["string", "null"],
+              "required": true
+            },
+            "isOutline": {
+              "type": "boolean",
+              "required": true
+            },
+            "result": {
+              "type": "string",
+              "required": true
+            },
+            "steps": {
+              "type": "array",
+              "required": true,
+              "items": {
+                "type": "object",
+                "required": true,
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "type": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "isBackground": {
+                    "type": "boolean",
+                    "required": false
+                  },
+                  "result": {
+                    "type": "string",
+                    "required": false
+                  }
+                }
+              }
+            },
+            "examples": {
+              "type": "array",
+              "required": false,
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "required": true,
+                "properties": {
+                  "values": {
+                    "type": "object",
+                    "required": true
+                  },
+                  "result": {
+                    "type": "string",
+                    "required": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

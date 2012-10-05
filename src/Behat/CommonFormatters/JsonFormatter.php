@@ -10,7 +10,8 @@ use Behat\Behat\Formatter\ConsoleFormatter,
     Behat\Behat\Event\BackgroundEvent,
     Behat\Behat\Event\OutlineEvent,
     Behat\Behat\Event\OutlineExampleEvent,
-    Behat\Behat\Event\StepEvent;
+    Behat\Behat\Event\StepEvent,
+    Behat\Behat\Exception\FormatterException;
 
 use Behat\Gherkin\Node\AbstractNode,
     Behat\Gherkin\Node\FeatureNode,
@@ -19,6 +20,10 @@ use Behat\Gherkin\Node\AbstractNode,
     Behat\Gherkin\Node\StepNode;
 
 use webignition\JsonPrettyPrinter\JsonPrettyPrinter;
+
+use Json\SchemaException,
+    Json\ValidationException,
+    Json\Validator;
 
 /**
  * Formatter that dumps the most important information about a suite run as JSON.
@@ -119,11 +124,8 @@ class JsonFormatter extends ConsoleFormatter
      */
     public function afterSuite(SuiteEvent $event)
     {
-        $json = json_encode($this->features);
-        if ($this->getParameter('debug')) {
-            $jsonPrettyPrinter = new JsonPrettyPrinter();
-            $json = $jsonPrettyPrinter->format($json);
-        }
+        $json = $this->buildJson();
+        $this->validateJson($json);
         $this->writeln($json);
     }
 
@@ -321,6 +323,38 @@ class JsonFormatter extends ConsoleFormatter
             return strtolower($resultAlias);
         } else {
             return null;
+        }
+    }
+
+    /**
+     * @return string
+     */
+    protected function buildJson()
+    {
+        $json = json_encode($this->features);
+        if ($this->getParameter('debug')) {
+            $jsonPrettyPrinter = new JsonPrettyPrinter();
+            $json = $jsonPrettyPrinter->format($json);
+        }
+
+        return $json;
+    }
+
+    /**
+     * @param string $json
+     */
+    protected function validateJson($json)
+    {
+        try {
+            $validator = new Validator(__DIR__ . '/../../../resources/json-formatter-schema');
+        } catch (SchemaException $e) {
+            throw new FormatterException("JSON schema is invalid:\n\n" . $e->getMessage());
+        }
+
+        try {
+            $validator->validate(json_decode($json));
+        } catch (ValidationException $e) {
+            throw new FormatterException("JSON is invalid:\n\n" . $e->getMessage());
         }
     }
 }
