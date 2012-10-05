@@ -28,6 +28,7 @@ use Json\SchemaException,
 /**
  * Formatter that dumps the most important information about a suite run as JSON.
  *
+ * @link   https://github.com/Behat/CommonFormatters/blob/master/resources/json-formatter-schema
  * @link   https://github.com/Behat/CommonFormatters/blob/master/features/json.feature
  *
  * @author Fabian Kiss <headrevision@gmail.com>
