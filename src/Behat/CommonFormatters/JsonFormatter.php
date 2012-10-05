@@ -164,7 +164,7 @@ class JsonFormatter extends ConsoleFormatter
     {
         $this->currentScenario = array(
             'title' => $event->getScenario()->getTitle(),
-            'class' => 'scenario'
+            'isOutline' => false
         );
         $this->currentSteps = array();
     }
@@ -210,7 +210,7 @@ class JsonFormatter extends ConsoleFormatter
     {
         $this->currentScenario = array(
             'title' => $event->getOutline()->getTitle(),
-            'class' => 'outline'
+            'isOutline' => true
         );
         $this->currentOutlineExamples = array();
     }
@@ -275,7 +275,7 @@ class JsonFormatter extends ConsoleFormatter
         $this->currentStep = array(
             'text' => $step->getText(),
             'type' => $step->getType(),
-            'background' => $this->currentlyBackgroundUnderway
+            'isBackground' => $this->currentlyBackgroundUnderway
         );
     }
 

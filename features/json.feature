@@ -182,13 +182,13 @@ Scenario: JSON-formatted output containing a scenario
         "scenarios": [
           {
             "title": "A scenario",
-            "class": "scenario",
+            "isOutline": false,
             "result": "passed",
             "steps": [
               {
                 "text": "some precondition",
                 "type": "Given",
-                "background": false,
+                "isBackground": false,
                 "result": "passed"
     """
 
@@ -209,26 +209,26 @@ Scenario: JSON-formatted output containing two scenarios
         "scenarios": [
           {
             "title": "A scenario",
-            "class": "scenario",
+            "isOutline": false,
             "result": "passed",
             "steps": [
               {
                 "text": "some precondition",
                 "type": "Given",
-                "background": false,
+                "isBackground": false,
                 "result": "passed"
     """
   And the output should contain:
     """
           {
             "title": "Another scenario",
-            "class": "scenario",
+            "isOutline": false,
             "result": "passed",
             "steps": [
               {
                 "text": "some precondition",
                 "type": "Given",
-                "background": false,
+                "isBackground": false,
                 "result": "passed"
     """
 
@@ -250,13 +250,13 @@ Scenario: JSON-formatted output containing a background and one scenario
         "scenarios": [
           {
             "title": "A scenario",
-            "class": "scenario",
+            "isOutline": false,
             "result": "passed",
             "steps": [
               {
                 "text": "some precondition",
                 "type": "Given",
-                "background": true,
+                "isBackground": true,
                 "result": "passed"
     """
   And the output should contain:
@@ -264,7 +264,7 @@ Scenario: JSON-formatted output containing a background and one scenario
               {
                 "text": "some precondition",
                 "type": "And",
-                "background": true,
+                "isBackground": true,
                 "result": "passed"
     """
   And the output should contain:
@@ -272,7 +272,7 @@ Scenario: JSON-formatted output containing a background and one scenario
               {
                 "text": "some action",
                 "type": "When",
-                "background": false,
+                "isBackground": false,
                 "result": "passed"
     """
 
@@ -296,13 +296,13 @@ Scenario: JSON-formatted output containing a background and two scenarios
         "scenarios": [
           {
             "title": "A scenario",
-            "class": "scenario",
+            "isOutline": false,
             "result": "passed",
             "steps": [
               {
                 "text": "some precondition",
                 "type": "Given",
-                "background": true,
+                "isBackground": true,
                 "result": "passed"
     """
   And the output should contain:
@@ -310,20 +310,20 @@ Scenario: JSON-formatted output containing a background and two scenarios
               {
                 "text": "some action",
                 "type": "When",
-                "background": false,
+                "isBackground": false,
                 "result": "passed"
     """
   And the output should contain:
     """
           {
             "title": "Another scenario",
-            "class": "scenario",
+            "isOutline": false,
             "result": "passed",
             "steps": [
               {
                 "text": "some precondition",
                 "type": "Given",
-                "background": true,
+                "isBackground": true,
                 "result": "passed"
     """
   And the output should contain:
@@ -331,7 +331,7 @@ Scenario: JSON-formatted output containing a background and two scenarios
               {
                 "text": "some outcome",
                 "type": "Then",
-                "background": false,
+                "isBackground": false,
                 "result": "passed"
               }
             ]
@@ -358,7 +358,7 @@ Scenario: JSON-formatted output containing a scenario outline with one placehold
         "scenarios": [
           {
             "title": "A scenario outline",
-            "class": "outline",
+            "isOutline": true,
             "result": "passed",
             "steps": [
               {
@@ -402,7 +402,7 @@ Scenario: JSON-formatted output containing a scenario outline with two placehold
         "scenarios": [
           {
             "title": "A scenario outline",
-            "class": "outline",
+            "isOutline": true,
             "result": "passed",
             "steps": [
               {
