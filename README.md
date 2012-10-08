@@ -53,25 +53,25 @@ https://github.com/Behat/CommonFormatters/blob/master/src/Behat/CommonFormatters
         "scenarios": [
           {
             "title": "A scenario",
-            "class": "scenario",
+            "isOutline": false,
             "result": "passed",
             "steps": [
               {
                 "text": "some precondition",
                 "type": "Given",
-                "background": false,
+                "isBackground": false,
                 "result": "passed"
               },
               {
                 "text": "some action",
                 "type": "When",
-                "background": false,
+                "isBackground": false,
                 "result": "passed"
               },
               {
                 "text": "some outcome",
                 "type": "Then",
-                "background": false,
+                "isBackground": false,
                 "result": "passed"
               }
             ]
