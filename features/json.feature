@@ -103,6 +103,21 @@ Feature: JSON formatter
       });
       """
 
+Scenario: JSON-formatted output containing a date
+  Given a file named "features/steps.feature" with:
+    """
+    Feature: Generate JSON
+
+      Scenario: A scenario
+        Given some precondition
+    """
+  When I run "behat -f json"
+  Then the output should contain:
+    """
+    {
+      "date": "
+    """
+
 Scenario: JSON-formatted output containing a feature with title only
   Given a file named "features/steps.feature" with:
     """
@@ -114,10 +129,10 @@ Scenario: JSON-formatted output containing a feature with title only
   When I run "behat -f json"
   Then the output should contain:
     """
-    [
-      {
-        "title": "Generate JSON",
-        "desc": null
+      "features": [
+        {
+          "title": "Generate JSON",
+          "desc": null
     """
 
 Scenario: JSON-formatted output containing a feature with title and description
@@ -132,10 +147,10 @@ Scenario: JSON-formatted output containing a feature with title and description
   When I run "behat -f json"
   Then the output should contain:
     """
-    [
-      {
-        "title": "Generate JSON",
-        "desc": "In order to generate JSON"
+      "features": [
+        {
+          "title": "Generate JSON",
+          "desc": "In order to generate JSON"
     """
 
 Scenario: JSON-formatted output containing two features
@@ -156,16 +171,16 @@ Scenario: JSON-formatted output containing two features
   When I run "behat -f json"
   Then the output should contain:
     """
-    [
-      {
-        "title": "Generate more JSON",
-        "desc": null
+      "features": [
+        {
+          "title": "Generate more JSON",
+          "desc": null
     """
   And the output should contain:
     """
-      {
-        "title": "Generate JSON",
-        "desc": null
+        {
+          "title": "Generate JSON",
+          "desc": null
     """
 
 Scenario: JSON-formatted output containing a scenario
@@ -179,17 +194,17 @@ Scenario: JSON-formatted output containing a scenario
   When I run "behat -f json"
   Then the output should contain:
     """
-        "scenarios": [
-          {
-            "title": "A scenario",
-            "isOutline": false,
-            "result": "passed",
-            "steps": [
-              {
-                "text": "some precondition",
-                "type": "Given",
-                "isBackground": false,
-                "result": "passed"
+          "scenarios": [
+            {
+              "title": "A scenario",
+              "isOutline": false,
+              "result": "passed",
+              "steps": [
+                {
+                  "text": "some precondition",
+                  "type": "Given",
+                  "isBackground": false,
+                  "result": "passed"
     """
 
 Scenario: JSON-formatted output containing two scenarios
@@ -206,30 +221,30 @@ Scenario: JSON-formatted output containing two scenarios
   When I run "behat -f json"
   Then the output should contain:
     """
-        "scenarios": [
-          {
-            "title": "A scenario",
-            "isOutline": false,
-            "result": "passed",
-            "steps": [
-              {
-                "text": "some precondition",
-                "type": "Given",
-                "isBackground": false,
-                "result": "passed"
+          "scenarios": [
+            {
+              "title": "A scenario",
+              "isOutline": false,
+              "result": "passed",
+              "steps": [
+                {
+                  "text": "some precondition",
+                  "type": "Given",
+                  "isBackground": false,
+                  "result": "passed"
     """
   And the output should contain:
     """
-          {
-            "title": "Another scenario",
-            "isOutline": false,
-            "result": "passed",
-            "steps": [
-              {
-                "text": "some precondition",
-                "type": "Given",
-                "isBackground": false,
-                "result": "passed"
+            {
+              "title": "Another scenario",
+              "isOutline": false,
+              "result": "passed",
+              "steps": [
+                {
+                  "text": "some precondition",
+                  "type": "Given",
+                  "isBackground": false,
+                  "result": "passed"
     """
 
 Scenario: JSON-formatted output containing a background and one scenario
@@ -247,33 +262,33 @@ Scenario: JSON-formatted output containing a background and one scenario
   When I run "behat -f json"
   Then the output should contain:
     """
-        "scenarios": [
-          {
-            "title": "A scenario",
-            "isOutline": false,
-            "result": "passed",
-            "steps": [
-              {
-                "text": "some precondition",
-                "type": "Given",
-                "isBackground": true,
-                "result": "passed"
+          "scenarios": [
+            {
+              "title": "A scenario",
+              "isOutline": false,
+              "result": "passed",
+              "steps": [
+                {
+                  "text": "some precondition",
+                  "type": "Given",
+                  "isBackground": true,
+                  "result": "passed"
     """
   And the output should contain:
     """
-              {
-                "text": "some precondition",
-                "type": "And",
-                "isBackground": true,
-                "result": "passed"
+                {
+                  "text": "some precondition",
+                  "type": "And",
+                  "isBackground": true,
+                  "result": "passed"
     """
   And the output should contain:
     """
-              {
-                "text": "some action",
-                "type": "When",
-                "isBackground": false,
-                "result": "passed"
+                {
+                  "text": "some action",
+                  "type": "When",
+                  "isBackground": false,
+                  "result": "passed"
     """
 
 Scenario: JSON-formatted output containing a background and two scenarios
@@ -293,50 +308,50 @@ Scenario: JSON-formatted output containing a background and two scenarios
   When I run "behat -f json"
   Then the output should contain:
     """
-        "scenarios": [
-          {
-            "title": "A scenario",
-            "isOutline": false,
-            "result": "passed",
-            "steps": [
-              {
-                "text": "some precondition",
-                "type": "Given",
-                "isBackground": true,
-                "result": "passed"
+          "scenarios": [
+            {
+              "title": "A scenario",
+              "isOutline": false,
+              "result": "passed",
+              "steps": [
+                {
+                  "text": "some precondition",
+                  "type": "Given",
+                  "isBackground": true,
+                  "result": "passed"
     """
   And the output should contain:
     """
-              {
-                "text": "some action",
-                "type": "When",
-                "isBackground": false,
-                "result": "passed"
+                {
+                  "text": "some action",
+                  "type": "When",
+                  "isBackground": false,
+                  "result": "passed"
     """
   And the output should contain:
     """
-          {
-            "title": "Another scenario",
-            "isOutline": false,
-            "result": "passed",
-            "steps": [
-              {
-                "text": "some precondition",
-                "type": "Given",
-                "isBackground": true,
-                "result": "passed"
+            {
+              "title": "Another scenario",
+              "isOutline": false,
+              "result": "passed",
+              "steps": [
+                {
+                  "text": "some precondition",
+                  "type": "Given",
+                  "isBackground": true,
+                  "result": "passed"
     """
   And the output should contain:
     """
-              {
-                "text": "some outcome",
-                "type": "Then",
-                "isBackground": false,
-                "result": "passed"
-              }
-            ]
-          }
-        ]
+                {
+                  "text": "some outcome",
+                  "type": "Then",
+                  "isBackground": false,
+                  "result": "passed"
+                }
+              ]
+            }
+          ]
     """
 
 Scenario: JSON-formatted output containing a scenario outline with one placeholder and two values
@@ -355,32 +370,32 @@ Scenario: JSON-formatted output containing a scenario outline with one placehold
   When I run "behat -f json"
   Then the output should contain:
     """
-        "scenarios": [
-          {
-            "title": "A scenario outline",
-            "isOutline": true,
-            "result": "passed",
-            "steps": [
-              {
-                "text": "<precondition>",
-                "type": "Given"
+          "scenarios": [
+            {
+              "title": "A scenario outline",
+              "isOutline": true,
+              "result": "passed",
+              "steps": [
+                {
+                  "text": "<precondition>",
+                  "type": "Given"
     """
   And the output should contain:
     """
-            "examples": [
-              {
-                "values": {
-                  "precondition": "precondition 1"
+              "examples": [
+                {
+                  "values": {
+                    "precondition": "precondition 1"
+                  },
+                  "result": "passed"
                 },
-                "result": "passed"
-              },
-              {
-                "values": {
-                  "precondition": "precondition 2"
-                },
-                "result": "passed"
-              }
-            ]
+                {
+                  "values": {
+                    "precondition": "precondition 2"
+                  },
+                  "result": "passed"
+                }
+              ]
     """
 
 Scenario: JSON-formatted output containing a scenario outline with two placeholders and one value each
@@ -399,31 +414,31 @@ Scenario: JSON-formatted output containing a scenario outline with two placehold
   When I run "behat -f json"
   Then the output should contain:
     """
-        "scenarios": [
-          {
-            "title": "A scenario outline",
-            "isOutline": true,
-            "result": "passed",
-            "steps": [
-              {
-                "text": "<precondition>",
-                "type": "Given"
+          "scenarios": [
+            {
+              "title": "A scenario outline",
+              "isOutline": true,
+              "result": "passed",
+              "steps": [
+                {
+                  "text": "<precondition>",
+                  "type": "Given"
     """
   And the output should contain:
     """
-              {
-                "text": "<action>",
-                "type": "When"
+                {
+                  "text": "<action>",
+                  "type": "When"
     """
   And the output should contain:
     """
-            "examples": [
-              {
-                "values": {
-                  "precondition": "precondition 1",
-                  "action": "action 1"
-                },
-                "result": "passed"
-              }
-            ]
+              "examples": [
+                {
+                  "values": {
+                    "precondition": "precondition 1",
+                    "action": "action 1"
+                  },
+                  "result": "passed"
+                }
+              ]
     """

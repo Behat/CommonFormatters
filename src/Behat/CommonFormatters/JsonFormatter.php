@@ -128,6 +128,7 @@ class JsonFormatter extends ConsoleFormatter
     public function afterSuite(SuiteEvent $event)
     {
         $json = $this->buildJson();
+        $json = $this->formatJson($json);
         $this->validateJson($json);
         $this->writeln($json);
     }
@@ -334,13 +335,29 @@ class JsonFormatter extends ConsoleFormatter
      */
     protected function buildJson()
     {
-        $json = json_encode($this->features);
-        if ($this->getParameter('debug')) {
-            $jsonPrettyPrinter = new JsonPrettyPrinter();
-            $json = $jsonPrettyPrinter->format($json);
-        }
+        $json = json_encode(array(
+            'date' => date('oooo-mm-dd HH:ii:ss'),
+            'features' => $this->features
+        ));
 
         return $json;
+    }
+
+    /**
+     * @param string $json
+     *
+     * @return string
+     */
+    protected function formatJson($json)
+    {
+        $formattedJson = $json;
+
+        if ($this->getParameter('debug')) {
+            $jsonPrettyPrinter = new JsonPrettyPrinter();
+            $formattedJson = $jsonPrettyPrinter->format($json);
+        }
+
+        return $formattedJson;
     }
 
     /**
