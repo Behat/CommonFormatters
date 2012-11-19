@@ -45,40 +45,43 @@ Formatter that dumps the most important information about a suite run as JSON
 
 https://github.com/Behat/CommonFormatters/blob/master/src/Behat/CommonFormatters/JsonFormatter.php
 
-    [
-      {
-        "title": "A feature",
-        "desc": null,
-        "result": "passed",
-        "scenarios": [
-          {
-            "title": "A scenario",
-            "isOutline": false,
-            "result": "passed",
-            "steps": [
-              {
-                "text": "some precondition",
-                "type": "Given",
-                "isBackground": false,
-                "result": "passed"
-              },
-              {
-                "text": "some action",
-                "type": "When",
-                "isBackground": false,
-                "result": "passed"
-              },
-              {
-                "text": "some outcome",
-                "type": "Then",
-                "isBackground": false,
-                "result": "passed"
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    {
+      date: "2012-11-20: 14:55:31",
+      features: [
+        {
+          "title": "A feature",
+          "desc": null,
+          "result": "passed",
+          "scenarios": [
+            {
+              "title": "A scenario",
+              "isOutline": false,
+              "result": "passed",
+              "steps": [
+                {
+                  "text": "some precondition",
+                  "type": "Given",
+                  "isBackground": false,
+                  "result": "passed"
+                },
+                {
+                  "text": "some action",
+                  "type": "When",
+                  "isBackground": false,
+                  "result": "passed"
+                },
+                {
+                  "text": "some outcome",
+                  "type": "Then",
+                  "isBackground": false,
+                  "result": "passed"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
 
 Formatter that adds a new line to a CSV file for each suite run
 ---------------------------------------------------------------
