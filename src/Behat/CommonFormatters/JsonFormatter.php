@@ -28,7 +28,7 @@ use Json\SchemaException,
 /**
  * Formatter that dumps the most important information about a suite run as JSON.
  *
- * @link   https://github.com/Behat/CommonFormatters/blob/master/resources/json-formatter-schema
+ * @link   https://github.com/Behat/CommonFormatters/blob/master/resources/json_formatter_schema.json
  * @link   https://github.com/Behat/CommonFormatters/blob/master/features/json.feature
  *
  * @author Fabian Kiss <headrevision@gmail.com>
@@ -349,7 +349,7 @@ class JsonFormatter extends ConsoleFormatter
     protected function validateJson($json)
     {
         try {
-            $validator = new Validator(__DIR__ . '/../../../resources/json-formatter-schema');
+            $validator = new Validator(__DIR__ . '/../../../resources/json_formatter_schema.json');
         } catch (SchemaException $e) {
             throw new FormatterException("JSON schema is invalid:\n\n" . $e->getMessage());
         }
