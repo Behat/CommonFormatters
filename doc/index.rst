@@ -29,10 +29,10 @@ activate ``common_formatters.phar`` in your ``behat.yml``:
       extensions:
         common_formatters.phar:
           formatters:
-            progress_false: 'Behat\CommonFormatters\ProgressWithFalseStepsFormatter',
-            pretty_false: 'Behat\CommonFormatters\PrettyWithFalseStepsFormatter',
-            html_false: 'Behat\CommonFormatters\HtmlWithFalseStepsFormatter',
-            csv_statistics: 'Behat\CommonFormatters\CsvStatisticsFormatter',
+            progress_false: 'Behat\CommonFormatters\ProgressWithFalseStepsFormatter'
+            pretty_false: 'Behat\CommonFormatters\PrettyWithFalseStepsFormatter'
+            html_false: 'Behat\CommonFormatters\HtmlWithFalseStepsFormatter'
+            csv_statistics: 'Behat\CommonFormatters\CsvStatisticsFormatter'
             json: 'Behat\CommonFormatters\JsonFormatter'
 
 Through Composer
@@ -71,10 +71,10 @@ The easiest way to keep your suite updated is to use `Composer <http://getcompos
           extensions:
             Behat\CommonFormatters\Extension:
               formatters:
-                progress_false: 'Behat\CommonFormatters\ProgressWithFalseStepsFormatter',
-                pretty_false: 'Behat\CommonFormatters\PrettyWithFalseStepsFormatter',
-                html_false: 'Behat\CommonFormatters\HtmlWithFalseStepsFormatter',
-                csv_statistics: 'Behat\CommonFormatters\CsvStatisticsFormatter',
+                progress_false: 'Behat\CommonFormatters\ProgressWithFalseStepsFormatter'
+                pretty_false: 'Behat\CommonFormatters\PrettyWithFalseStepsFormatter'
+                html_false: 'Behat\CommonFormatters\HtmlWithFalseStepsFormatter'
+                csv_statistics: 'Behat\CommonFormatters\CsvStatisticsFormatter'
                 json: 'Behat\CommonFormatters\JsonFormatter'
 
 Usage
