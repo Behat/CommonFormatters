@@ -12,13 +12,14 @@
         }
     ],
 
-    "minimum-stability": "dev",
-
     "require": {
         "php":                             ">=5.3.2",
-        "behat/behat":                     ">=2.4.0,<2.5.0",
-        "webignition/json-pretty-print":   "*",
-        "hasbridge/json-schema-validator": "*"
+        "webignition/json-pretty-print":   "dev-master",
+        "hasbridge/json-schema-validator": "dev-master"
+    },
+
+    "require-dev": {
+        "behat/behat":                     "~2.4.0"
     },
 
     "autoload": {

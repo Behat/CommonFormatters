@@ -16,8 +16,7 @@ Through PHAR
 You should first download 2 phar archives:
 
 * `behat.phar <http://behat.org/downloads/behat.phar>`_ - Behat itself
-* `common_formatters.phar <http://behat.org/downloads/common_formatters.phar>`_
-  - the extra formatters
+* `common_formatters.phar <http://behat.org/downloads/common_formatters.phar>`_ - the extra formatters
 
 After downloading and placing them into project directory, you need to 
 activate ``common_formatters.phar`` in your ``behat.yml``:
@@ -33,7 +32,8 @@ activate ``common_formatters.phar`` in your ``behat.yml``:
             progress_false: 'Behat\CommonFormatters\ProgressWithFalseStepsFormatter',
             pretty_false: 'Behat\CommonFormatters\PrettyWithFalseStepsFormatter',
             html_false: 'Behat\CommonFormatters\HtmlWithFalseStepsFormatter',
-            csv_statistics: 'Behat\CommonFormatters\CsvStatisticsFormatter'
+            csv_statistics: 'Behat\CommonFormatters\CsvStatisticsFormatter',
+            json: 'Behat\CommonFormatters\JsonFormatter'
 
 Through Composer
 ~~~~~~~~~~~~~~~~
@@ -45,10 +45,12 @@ The easiest way to keep your suite updated is to use `Composer <http://getcompos
     .. code-block:: js
 
         {
+            "minimum-stability": "dev",
+
             "require": {
                 ...
 
-                "behat/common-formatters": "*"
+                "behat/common-formatters": "dev-master"
             }
         }
 
@@ -72,7 +74,8 @@ The easiest way to keep your suite updated is to use `Composer <http://getcompos
                 progress_false: 'Behat\CommonFormatters\ProgressWithFalseStepsFormatter',
                 pretty_false: 'Behat\CommonFormatters\PrettyWithFalseStepsFormatter',
                 html_false: 'Behat\CommonFormatters\HtmlWithFalseStepsFormatter',
-                csv_statistics: 'Behat\CommonFormatters\CsvStatisticsFormatter'
+                csv_statistics: 'Behat\CommonFormatters\CsvStatisticsFormatter',
+                json: 'Behat\CommonFormatters\JsonFormatter'
 
 Usage
 -----
