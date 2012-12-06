@@ -336,7 +336,7 @@ class JsonFormatter extends ConsoleFormatter
     protected function buildJson()
     {
         $json = json_encode(array(
-            'date' => date('oooo-mm-dd HH:ii:ss'),
+            'date' => date('o-m-d H:i:s'),
             'features' => $this->features
         ));
 
