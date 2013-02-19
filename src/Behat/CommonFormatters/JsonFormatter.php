@@ -13,11 +13,7 @@ use Behat\Behat\Formatter\ConsoleFormatter,
     Behat\Behat\Event\StepEvent,
     Behat\Behat\Exception\FormatterException;
 
-use Behat\Gherkin\Node\AbstractNode,
-    Behat\Gherkin\Node\FeatureNode,
-    Behat\Gherkin\Node\ScenarioNode,
-    Behat\Gherkin\Node\OutlineExampleNode,
-    Behat\Gherkin\Node\StepNode;
+use Behat\Gherkin\Node\StepNode;
 
 use webignition\JsonPrettyPrinter\JsonPrettyPrinter;
 
@@ -279,7 +275,7 @@ class JsonFormatter extends ConsoleFormatter
         $step = $event->getStep();
 
         $this->currentStep = array(
-            'text' => $step->getText(),
+            'text' => $this->getStepText($step),
             'type' => $step->getType(),
             'isBackground' => $this->currentlyBackgroundUnderway
         );
@@ -305,6 +301,24 @@ class JsonFormatter extends ConsoleFormatter
             'expand' => true,
             'debug' => false
         );
+    }
+
+    /**
+     * @param Behat\Gherkin\Node\StepNode $step
+     *
+     * @return string
+     */
+    protected function getStepText(StepNode $step)
+    {
+        $rawText = $step->getText();
+
+        if ($step->hasArguments()) {
+            foreach($step->getArguments() as $stepArgument) {
+                $rawText .= "\n" . $stepArgument;
+            }
+        }
+
+        return $rawText;
     }
 
     /**

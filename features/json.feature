@@ -247,6 +247,32 @@ Scenario: JSON-formatted output containing two scenarios
                   "result": "passed"
     """
 
+Scenario: JSON-formatted output containing a scenario with a table
+  Given a file named "features/steps.feature" with:
+    """
+    Feature: Generate JSON
+      Scenario: A scenario
+        Given some precondition:
+          | foo | bar |
+          | a1  | a2  |
+          | b1  | b2  |
+    """
+  When I run "behat -f json"
+  Then the output should contain:
+    """
+          "scenarios": [
+            {
+              "title": "A scenario",
+              "isOutline": false,
+              "result": "passed",
+              "steps": [
+                {
+                  "text": "some precondition:\n| foo | bar |\n| a1  | a2  |\n| b1  | b2  |",
+                  "type": "Given",
+                  "isBackground": false,
+                  "result": "passed"
+    """
+
 Scenario: JSON-formatted output containing a background and one scenario
   Given a file named "features/steps.feature" with:
     """
