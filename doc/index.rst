@@ -45,12 +45,14 @@ The easiest way to keep your suite updated is to use `Composer <http://getcompos
     .. code-block:: js
 
         {
-            "minimum-stability": "dev",
+            ...
 
             "require": {
                 ...
 
-                "behat/common-formatters": "dev-master"
+                "behat/common-formatters":         "dev-master",
+                "webignition/json-pretty-print":   "@dev",
+                "hasbridge/json-schema-validator": "@dev"
             }
         }
 
