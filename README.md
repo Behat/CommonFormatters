@@ -51,11 +51,17 @@ https://github.com/Behat/CommonFormatters/blob/master/src/Behat/CommonFormatters
         {
           "title": "A feature",
           "desc": null,
+          "tags": [
+            "wip"
+          ],
           "result": "passed",
           "scenarios": [
             {
               "title": "A scenario",
               "isOutline": false,
+              "tags": [
+                "wip"
+              ],
               "result": "passed",
               "steps": [
                 {
