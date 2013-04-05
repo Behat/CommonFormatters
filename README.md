@@ -52,7 +52,7 @@ https://github.com/Behat/CommonFormatters/blob/master/src/Behat/CommonFormatters
           "title": "A feature",
           "desc": null,
           "tags": [
-            "wip"
+            "foo"
           ],
           "result": "passed",
           "scenarios": [
@@ -60,7 +60,7 @@ https://github.com/Behat/CommonFormatters/blob/master/src/Behat/CommonFormatters
               "title": "A scenario",
               "isOutline": false,
               "tags": [
-                "wip"
+                "bar"
               ],
               "result": "passed",
               "steps": [

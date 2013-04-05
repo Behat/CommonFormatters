@@ -499,7 +499,7 @@ Scenario: JSON-formatted output containing a scenario outline with two placehold
 Scenario: JSON-formatted output containing a feature with one or more tags
   Given a file named "features/steps.feature" with:
     """
-    @json @wip
+    @foo @bar
     Feature: Generate JSON
 
       Scenario: A scenario
@@ -513,8 +513,8 @@ Scenario: JSON-formatted output containing a feature with one or more tags
           "title": "Generate JSON",
           "desc": null,
           "tags": [
-            "json",
-            "wip"
+            "foo",
+            "bar"
           ]
     """
 
@@ -523,7 +523,7 @@ Scenario: JSON-formatted output containing a scenario with one or more tags
     """
     Feature: Generate JSON
 
-      @json @wip
+      @foo @bar
       Scenario: A scenario
         Given some precondition
     """
@@ -535,18 +535,18 @@ Scenario: JSON-formatted output containing a scenario with one or more tags
               "title": "A scenario",
               "isOutline": false,
               "tags": [
-                "json",
-                "wip"
+                "foo",
+                "bar"
               ]
     """
 
 Scenario: JSON-formatted output containing a feature and child scenario with one tag each
   Given a file named "features/steps.feature" with:
     """
-    @json
+    @foo
     Feature: Generate JSON
 
-      @wip
+      @bar
       Scenario: A scenario
         Given some precondition
     """
@@ -558,7 +558,7 @@ Scenario: JSON-formatted output containing a feature and child scenario with one
           "title": "Generate JSON",
           "desc": null,
           "tags": [
-            "json"
+            "foo"
           ]
     """
   And the output should contain:
@@ -568,8 +568,8 @@ Scenario: JSON-formatted output containing a feature and child scenario with one
               "title": "A scenario",
               "isOutline": false,
               "tags": [
-                "wip",
-                "json"
+                "bar",
+                "foo"
               ]
     """
 
@@ -578,7 +578,7 @@ Scenario: JSON-formatted output containing a scenario outline with one or more t
     """
     Feature: Generate JSON
 
-      @json @wip
+      @foo @bar
       Scenario Outline: A scenario outline
         Given <precondition>
 
@@ -595,8 +595,8 @@ Scenario: JSON-formatted output containing a scenario outline with one or more t
               "title": "A scenario outline",
               "isOutline": true,
               "tags": [
-                "json",
-                "wip"
+                "foo",
+                "bar"
               ],
               "result": "passed",
               "steps": [
