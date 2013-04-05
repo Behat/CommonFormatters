@@ -1,5 +1,5 @@
 Feature: JSON formatter
-  In order to reuse a test run output as a human-readable data structure 
+  In order to reuse a test run output as a human-readable data structure
   As a behat developer
   I need to have a JSON formatter
 
@@ -198,6 +198,9 @@ Scenario: JSON-formatted output containing a scenario
             {
               "title": "A scenario",
               "isOutline": false,
+              "tags": [
+
+              ],
               "result": "passed",
               "steps": [
                 {
@@ -225,6 +228,9 @@ Scenario: JSON-formatted output containing two scenarios
             {
               "title": "A scenario",
               "isOutline": false,
+              "tags": [
+
+              ],
               "result": "passed",
               "steps": [
                 {
@@ -238,6 +244,9 @@ Scenario: JSON-formatted output containing two scenarios
             {
               "title": "Another scenario",
               "isOutline": false,
+              "tags": [
+
+              ],
               "result": "passed",
               "steps": [
                 {
@@ -264,6 +273,9 @@ Scenario: JSON-formatted output containing a scenario with a table
             {
               "title": "A scenario",
               "isOutline": false,
+              "tags": [
+
+              ],
               "result": "passed",
               "steps": [
                 {
@@ -292,6 +304,9 @@ Scenario: JSON-formatted output containing a background and one scenario
             {
               "title": "A scenario",
               "isOutline": false,
+              "tags": [
+
+              ],
               "result": "passed",
               "steps": [
                 {
@@ -338,6 +353,9 @@ Scenario: JSON-formatted output containing a background and two scenarios
             {
               "title": "A scenario",
               "isOutline": false,
+              "tags": [
+
+              ],
               "result": "passed",
               "steps": [
                 {
@@ -359,6 +377,9 @@ Scenario: JSON-formatted output containing a background and two scenarios
             {
               "title": "Another scenario",
               "isOutline": false,
+              "tags": [
+
+              ],
               "result": "passed",
               "steps": [
                 {
@@ -400,6 +421,9 @@ Scenario: JSON-formatted output containing a scenario outline with one placehold
             {
               "title": "A scenario outline",
               "isOutline": true,
+              "tags": [
+
+              ],
               "result": "passed",
               "steps": [
                 {
@@ -444,6 +468,9 @@ Scenario: JSON-formatted output containing a scenario outline with two placehold
             {
               "title": "A scenario outline",
               "isOutline": true,
+              "tags": [
+
+              ],
               "result": "passed",
               "steps": [
                 {
@@ -467,4 +494,113 @@ Scenario: JSON-formatted output containing a scenario outline with two placehold
                   "result": "passed"
                 }
               ]
+    """
+
+Scenario: JSON-formatted output containing a feature with one or more tags
+  Given a file named "features/steps.feature" with:
+    """
+    @json @wip
+    Feature: Generate JSON
+
+      Scenario: A scenario
+        Given some precondition
+    """
+  When I run "behat -f json"
+  Then the output should contain:
+    """
+      "features": [
+        {
+          "title": "Generate JSON",
+          "desc": null,
+          "tags": [
+            "json",
+            "wip"
+          ]
+    """
+
+Scenario: JSON-formatted output containing a scenario with one or more tags
+  Given a file named "features/steps.feature" with:
+    """
+    Feature: Generate JSON
+
+      @json @wip
+      Scenario: A scenario
+        Given some precondition
+    """
+  When I run "behat -f json"
+  Then the output should contain:
+    """
+          "scenarios": [
+            {
+              "title": "A scenario",
+              "isOutline": false,
+              "tags": [
+                "json",
+                "wip"
+              ]
+    """
+
+Scenario: JSON-formatted output containing a feature and child scenario with one tag each
+  Given a file named "features/steps.feature" with:
+    """
+    @json
+    Feature: Generate JSON
+
+      @wip
+      Scenario: A scenario
+        Given some precondition
+    """
+  When I run "behat -f json"
+  Then the output should contain:
+    """
+      "features": [
+        {
+          "title": "Generate JSON",
+          "desc": null,
+          "tags": [
+            "json"
+          ]
+    """
+  And the output should contain:
+    """
+          "scenarios": [
+            {
+              "title": "A scenario",
+              "isOutline": false,
+              "tags": [
+                "wip",
+                "json"
+              ]
+    """
+
+Scenario: JSON-formatted output containing a scenario outline with one or more tags
+  Given a file named "features/steps.feature" with:
+    """
+    Feature: Generate JSON
+
+      @json @wip
+      Scenario Outline: A scenario outline
+        Given <precondition>
+
+      Examples:
+        | precondition   |
+        | precondition 1 |
+        | precondition 2 |
+    """
+  When I run "behat -f json"
+  Then the output should contain:
+    """
+          "scenarios": [
+            {
+              "title": "A scenario outline",
+              "isOutline": true,
+              "tags": [
+                "json",
+                "wip"
+              ],
+              "result": "passed",
+              "steps": [
+                {
+                  "text": "<precondition>",
+                  "type": "Given"
     """
