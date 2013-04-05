@@ -166,6 +166,7 @@ class JsonFormatter extends ConsoleFormatter
     public function beforeScenario(ScenarioEvent $event)
     {
         $scenario = $event->getScenario();
+
         $this->currentScenario = array(
             'title' => $scenario->getTitle(),
             'isOutline' => false,
