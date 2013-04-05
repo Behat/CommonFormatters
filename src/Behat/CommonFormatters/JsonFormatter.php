@@ -214,9 +214,12 @@ class JsonFormatter extends ConsoleFormatter
      */
     public function beforeOutline(OutlineEvent $event)
     {
+        $outline = $event->getOutline();
+
         $this->currentScenario = array(
-            'title' => $event->getOutline()->getTitle(),
-            'isOutline' => true
+            'title' => $outline->getTitle(),
+            'isOutline' => true,
+            'tags' => $outline->getTags()
         );
         $this->currentOutlineExamples = array();
     }

@@ -421,6 +421,9 @@ Scenario: JSON-formatted output containing a scenario outline with one placehold
             {
               "title": "A scenario outline",
               "isOutline": true,
+              "tags": [
+
+              ],
               "result": "passed",
               "steps": [
                 {
@@ -465,6 +468,9 @@ Scenario: JSON-formatted output containing a scenario outline with two placehold
             {
               "title": "A scenario outline",
               "isOutline": true,
+              "tags": [
+
+              ],
               "result": "passed",
               "steps": [
                 {
@@ -565,4 +571,36 @@ Scenario: JSON-formatted output containing a feature and child scenario with one
                 "wip",
                 "json"
               ]
+    """
+
+Scenario: JSON-formatted output containing a scenario outline with one or more tags
+  Given a file named "features/steps.feature" with:
+    """
+    Feature: Generate JSON
+
+      @json @wip
+      Scenario Outline: A scenario outline
+        Given <precondition>
+
+      Examples:
+        | precondition   |
+        | precondition 1 |
+        | precondition 2 |
+    """
+  When I run "behat -f json"
+  Then the output should contain:
+    """
+          "scenarios": [
+            {
+              "title": "A scenario outline",
+              "isOutline": true,
+              "tags": [
+                "json",
+                "wip"
+              ],
+              "result": "passed",
+              "steps": [
+                {
+                  "text": "<precondition>",
+                  "type": "Given"
     """
