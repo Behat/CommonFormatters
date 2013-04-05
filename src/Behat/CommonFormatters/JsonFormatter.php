@@ -35,7 +35,7 @@ class JsonFormatter extends ConsoleFormatter
      * @var array
      */
     protected $features;
-    
+
     /**
      * @var array
      */
@@ -140,7 +140,8 @@ class JsonFormatter extends ConsoleFormatter
 
         $this->currentFeature = array(
             'title' => $feature->getTitle(),
-            'desc' => $feature->getDescription()
+            'desc' => $feature->getDescription(),
+            'tags' => $feature->getTags()
         );
         $this->currentScenarios = array();
     }
@@ -164,9 +165,11 @@ class JsonFormatter extends ConsoleFormatter
      */
     public function beforeScenario(ScenarioEvent $event)
     {
+        $scenario = $event->getScenario();
         $this->currentScenario = array(
-            'title' => $event->getScenario()->getTitle(),
-            'isOutline' => false
+            'title' => $scenario->getTitle(),
+            'isOutline' => false,
+            'tags' => $scenario->getTags()
         );
         $this->currentSteps = array();
     }
@@ -336,7 +339,7 @@ class JsonFormatter extends ConsoleFormatter
             return null;
         }
 
-        $resultAlias = array_search($event->getResult(), $resultAliases); 
+        $resultAlias = array_search($event->getResult(), $resultAliases);
         if ($resultAlias) {
             return strtolower($resultAlias);
         } else {
