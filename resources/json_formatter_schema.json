@@ -22,6 +22,15 @@
             "type": ["string", "null"],
             "required": true
           },
+          "tags": {
+            "type": "array",
+            "required": true,
+            "minItems": 0
+          },
+          "result": {
+            "type": "string",
+            "required": true
+          },
           "scenarios": {
             "type": "array",
             "required": true,
@@ -36,6 +45,11 @@
                 "isOutline": {
                   "type": "boolean",
                   "required": true
+                },
+                "tags": {
+                  "type": "array",
+                  "required": true,
+                  "minItems": 0
                 },
                 "result": {
                   "type": "string",
