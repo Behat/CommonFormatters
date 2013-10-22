@@ -19,7 +19,8 @@
     },
 
     "require-dev": {
-        "behat/behat":                     "~2.4.0"
+        "behat/behat":                     "~2.4.0",
+        "phpunit/phpunit":                 "~3.7.24"
     },
 
     "autoload": {
