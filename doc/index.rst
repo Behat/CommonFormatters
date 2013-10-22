@@ -10,37 +10,14 @@ This extension requires:
 
 * Behat 2.4+
 
-Through PHAR
-~~~~~~~~~~~~
-
-You should first download 2 phar archives:
-
-* `behat.phar <http://behat.org/downloads/behat.phar>`_ - Behat itself
-* `common_formatters.phar <http://behat.org/downloads/common_formatters.phar>`_ - the extra formatters
-
-After downloading and placing them into project directory, you need to 
-activate ``common_formatters.phar`` in your ``behat.yml``:
-
-.. code-block:: yaml
-
-    # behat.yml
-    default:
-      # ...
-      extensions:
-        common_formatters.phar:
-          formatters:
-            progress_false: 'Behat\CommonFormatters\ProgressWithFalseStepsFormatter'
-            pretty_false: 'Behat\CommonFormatters\PrettyWithFalseStepsFormatter'
-            html_false: 'Behat\CommonFormatters\HtmlWithFalseStepsFormatter'
-            csv_statistics: 'Behat\CommonFormatters\CsvStatisticsFormatter'
-            json: 'Behat\CommonFormatters\JsonFormatter'
-
 Through Composer
 ~~~~~~~~~~~~~~~~
 
 The easiest way to keep your suite updated is to use `Composer <http://getcomposer.org>`_:
 
 1. Define dependencies in your ``composer.json``:
+
+    Behat 2.x:
 
     .. code-block:: js
 
@@ -50,7 +27,7 @@ The easiest way to keep your suite updated is to use `Composer <http://getcompos
             "require": {
                 ...
 
-                "behat/common-formatters":         "dev-master",
+                "behat/common-formatters":         "1.2.*",
                 "webignition/json-pretty-print":   "@dev",
                 "hasbridge/json-schema-validator": "@dev"
             }
