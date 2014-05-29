@@ -170,7 +170,9 @@ class JsonFormatter extends ConsoleFormatter
         $this->currentScenario = array(
             'title' => $scenario->getTitle(),
             'isOutline' => false,
-            'tags' => $scenario->getTags()
+            'tags' => $scenario->getTags(),
+            'line' => $scenario->getLine(),
+            'file' => $scenario->getFile()
         );
         $this->currentSteps = array();
     }
@@ -219,7 +221,9 @@ class JsonFormatter extends ConsoleFormatter
         $this->currentScenario = array(
             'title' => $outline->getTitle(),
             'isOutline' => true,
-            'tags' => $outline->getTags()
+            'tags' => $outline->getTags(),
+            'line' => $outline->getLine(),
+            'file' => $outline->getFile()
         );
         $this->currentOutlineExamples = array();
     }
@@ -284,7 +288,9 @@ class JsonFormatter extends ConsoleFormatter
         $this->currentStep = array(
             'text' => $this->getStepText($step),
             'type' => $step->getType(),
-            'isBackground' => $this->currentlyBackgroundUnderway
+            'isBackground' => $this->currentlyBackgroundUnderway,
+            'line' => $step->getLine(),
+            'file' => $step->getFile()
         );
     }
 
@@ -295,6 +301,8 @@ class JsonFormatter extends ConsoleFormatter
      */
     public function afterStep(StepEvent $event)
     {
+        $this->currentStep['has_snippet'] = $event->hasSnippet();
+        $this->currentStep['snippet'] = (string) $event->getSnippet();
         $this->currentStep['result'] = $this->getResultAlias($event);
         $this->currentSteps[] = $this->currentStep;
     }
