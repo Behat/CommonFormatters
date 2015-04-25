@@ -11,6 +11,15 @@ use Behat\Behat\DataCollector\LoggerDataCollector;
  */
 class FalseStepRecognizer
 { 
+
+    /*
+     * recognition works for PHPUnit & Mink only!
+     */
+    protected static $frameworkExceptions = array(
+        'PHPUnit_Framework_ExpectationFailedException',
+        'Behat\Mink\Exception\ExpectationException',
+    );
+
     /**
      * @param   Exception   $exception   exception to a step failed
      *
@@ -18,10 +27,13 @@ class FalseStepRecognizer
      */
     public static function isAnAssertionFrameworkException($exception)
     {
-        /*
-         * recognition works for PHPUnit only!
-         */
-        return (get_class($exception) == 'PHPUnit_Framework_ExpectationFailedException');
+        foreach (self::$frameworkExceptions as $className) {
+            if ($exception instanceof $className) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
