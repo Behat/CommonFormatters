@@ -1,6 +1,12 @@
 CommonFormatters Behat extension
 ================================
 
+
+This package is abandoned
+-------------------------
+
+This package (which was never updated for Behat v3.x) is now abandoned and will not receive further updates.
+
 [![Build
 Status](https://secure.travis-ci.org/Behat/CommonFormatters.png?branch=master)](http://travis-ci.org/Behat/CommonFormatters)
 
