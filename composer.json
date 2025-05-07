@@ -1,5 +1,6 @@
 {
     "name":         "behat/common-formatters",
+    "abandoned":    true,
     "type":         "behat-extension",
     "description":  "Commonly used formatters for Behat",
     "keywords":     ["BDD", "Behat"],
